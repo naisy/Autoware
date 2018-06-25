@@ -59,11 +59,22 @@ nvidia-docker run \
 autoware:1.6.3
 ```
 
+## Autoware1.7.0
+* Ubuntu 16.04
+* CUDA9
+* CUDNN7
+* Python2.7
+* OpenCV3.3.1
+* OpenCVContrib3.3.1
+* ROS Kinetic
+* Autoware1.7.0
+
 ## Autoware1.6.3
 * Ubuntu 16.04
 * CUDA8
 * CUDNN6
 * Python2.7
-* OpenCV3.2
+* OpenCV3.2.0
+* OpenCVContrib3.2.0
 * ROS Kinetic
 * Autoware1.6.3
