@@ -15,7 +15,7 @@ nvidia-docker run \
     -v $XSOCK:$XSOCK:rw \
     -v $HOST_USER_XAUTH:$DOCKER_USER_XAUTH:rw \
     -v $HOST_ROOT_XAUTH:$DOCKER_ROOT_XAUTH:rw \
-    -v $HOST_MOUNT_PATH:$DOCKER_MOUNT_PATH:rw \
+    -v $HOST_MOUNT_PATH:$DOCKER_MOUNT_PATH \
     -e DISPLAY=${DISPLAY} \
     --privileged \
     -u ubuntu \

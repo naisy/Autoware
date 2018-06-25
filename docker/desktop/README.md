@@ -51,7 +51,7 @@ nvidia-docker run \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v /home/$(getent passwd 1000 | cut -d: -f1)/.docker.xauth:/home/ubuntu/.docker.xauth:rw \
     -v /root/.docker.xauth:/root/.docker.xauth:rw \
-    -v /home/$(getent passwd 1000 | cut -d: -f1)/.autoware:/home/ubuntu/.autoware:rw \
+    -v /home/$(getent passwd 1000 | cut -d: -f1)/.autoware:/home/ubuntu/.autoware \
     -e DISPLAY=${DISPLAY} \
     --privileged \
     -u ubuntu \
