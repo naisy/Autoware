@@ -26,7 +26,7 @@ DockerはPC上のカーネルイメージを共有するので、PCのOSもUbunt
 
 ## Intel Network Driver
 Motherboard: ASRock B360M  
-In order to recognize the LAN port of this motherboard, it is necessary to install the Intel network driver.
+In order to recognize the LAN port of this motherboard, it is necessary to install the Intel network driver.  
 
 ```
 lspci
@@ -45,8 +45,8 @@ lo        Link encap:Local Loopback
 The lspci command recognizes it as an Intel Ethernet controller, but ifconfig does not display anything. Of course apt-get update also fails.  
 
 Driver download:  
-[https://downloadcenter.intel.com/download/15817](https://downloadcenter.intel.com/download/15817)
-Copy the downloaded file to Ubuntu Desktop PC with USB memory stick.
+[https://downloadcenter.intel.com/download/15817](https://downloadcenter.intel.com/download/15817)  
+Copy the downloaded file to Ubuntu Desktop PC with USB memory stick.  
 
 Install:  
 ```
@@ -61,14 +61,14 @@ If you get an error with "modprobe e1000e", you need to disable Secure Boot in B
 
 [https://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules](https://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules)  
 
-> Since Ubuntu kernel 4.4.0-20 the EFI_SECURE_BOOT_SIG_ENFORCE kernel config has been enabled. That prevents from loading unsigned third party modules if UEFI Secure Boot is enabled.
+> Since Ubuntu kernel 4.4.0-20 the EFI_SECURE_BOOT_SIG_ENFORCE kernel config has been enabled. That prevents from loading unsigned third party modules if UEFI Secure Boot is enabled.  
 
-In a typical BIOS, press the Del key to start the BIOS setting screen when the PC starts up.
+In a typical BIOS, press the Del key to start the BIOS setting screen when the PC starts up.  
 
 <hr>
 
-マザーボード：ASRock B360M
-このマザーボードのLANポートを認識させるにはIntelネットワークドライバのインストールが必要になります。
+マザーボード：ASRock B360M  
+このマザーボードのLANポートを認識させるにはIntelネットワークドライバのインストールが必要になります。  
 
 ```
 lspci
@@ -85,12 +85,12 @@ lo        Link encap:Local Loopback
           RX bytes:13450 (13.4 KB)  TX bytes:13450 (13.4 KB)
 ```
 
-lspciコマンドではIntel Ethernet controllerと認識されていますが、ifconfigでは何も表示されません。もちろんapt-get updateも失敗します。
-ドライバダウンロード：
-[https://downloadcenter.intel.com/download/15817](https://downloadcenter.intel.com/download/15817)
-ダウンロードしたファイルをUSBメモリスティックを使ってUbuntuデスクトップPCにコピーしてください。
+lspciコマンドではIntel Ethernet controllerと認識されていますが、ifconfigでは何も表示されません。もちろんapt-get updateも失敗します。  
+ドライバダウンロード：  
+[https://downloadcenter.intel.com/download/15817](https://downloadcenter.intel.com/download/15817)  
+ダウンロードしたファイルをUSBメモリスティックを使ってUbuntuデスクトップPCにコピーしてください。  
 
-インストール：
+インストール：  
 ```
 tar fxv e1000e-3.4.0.2.tar.gz
 cd e1000e-3.4.0.2/src/
@@ -147,7 +147,7 @@ cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery \
 nvidia-docker2 needs docker2, but it needs Ubuntu 18.03 or later.  
 Therefore, use docker-ce for nvidia-docker.  
 
-[https://docs.docker.com/install/linux/docker-ce/ubuntu/](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+[https://docs.docker.com/install/linux/docker-ce/ubuntu/](https://docs.docker.com/install/linux/docker-ce/ubuntu/)    
 ```
 sudo apt-get remove docker docker-engine docker.io
 sudo apt-get install \
