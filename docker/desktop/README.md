@@ -6,6 +6,9 @@
 * Docker 1.9 or later.
 * NVIDIA Docker 
 
+## PC Setup
+[Install on PC](INSTALL.md)
+
 ## docker build
 ```
 sudo su
