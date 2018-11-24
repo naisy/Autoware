@@ -144,9 +144,6 @@ cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery \
 ```
 
 ## Docker-ce
-nvidia-docker2 needs docker2, but it needs Ubuntu 18.03 or later.  
-Therefore, use docker-ce for nvidia-docker.  
-
 [https://docs.docker.com/install/linux/docker-ce/ubuntu/](https://docs.docker.com/install/linux/docker-ce/ubuntu/)    
 ```
 sudo apt-get remove docker docker-engine docker.io
@@ -169,12 +166,12 @@ docker run --rm hello-world
 
 
 ## NVIDIA Docker
-nvidia-docker2 needs docker2, but it needs Ubuntu 18.03 or later.  
-Therefore, use nvidia-docker version 1.  
+Autoware 1.8.0 or later needs nvidia-docker2.<br>
+[https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0))
 ```
-wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
-dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
+sudo apt-get install nvidia-docker2
+sudo pkill -SIGHUP dockerd
 # Test nvidia-smi
-nvidia-docker run --rm nvidia/cuda nvidia-smi
+docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 
