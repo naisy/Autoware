@@ -11,8 +11,9 @@ DOCKER_USER_XAUTH=$DOCKER_USER_HOME/$XAUTH_FILE
 DOCKER_ROOT_XAUTH=$DOCKER_ROOT_HOME/$XAUTH_FILE
 DOCKER_MOUNT_PATH=/home/ubuntu/.autoware
 
-nvidia-docker run \
-    -it --rm \
+docker run \
+    --runtime=nvidia \
+    -it \
     -v $XSOCK:$XSOCK:rw \
     -v $HOST_USER_XAUTH:$DOCKER_USER_XAUTH:rw \
     -v $HOST_ROOT_XAUTH:$DOCKER_ROOT_XAUTH:rw \
@@ -21,4 +22,4 @@ nvidia-docker run \
     --privileged \
     -u ubuntu \
     --network=host \
-autoware:1.6.3
+autoware:1.9.1
