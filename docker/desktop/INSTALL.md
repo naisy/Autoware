@@ -167,7 +167,17 @@ docker run --rm hello-world
 
 ## NVIDIA Docker
 Autoware 1.8.0 or later needs nvidia-docker2.<br>
-[https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0))
+[https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0))<br>
+[https://nvidia.github.io/nvidia-docker/](https://nvidia.github.io/nvidia-docker/)
+```
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+```
+
 ```
 sudo apt-get install nvidia-docker2
 sudo pkill -SIGHUP dockerd
@@ -175,3 +185,30 @@ sudo pkill -SIGHUP dockerd
 docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 
+## ERROR CASE:
+nvidia-docker2 may not correspond to the latest docker version. If apt-get install nvidia-docker2 gets an error like the following, you need to adjust the version of docker-ce to nvidia-docker2.
+```
+apt-get install nvidia-docker2
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ nvidia-docker2 : Depends: docker-ce (= 5:18.09.0~3-0~ubuntu-xenial) but 5:18.09.1~3-0~ubuntu-xenial is to be installed or
+                           docker-ee (= 5:18.09.0~3-0~ubuntu-xenial) but it is not installable
+E: Unable to correct problems, you have held broken packages.
+```
+
+```
+# check avaiable docker versions
+sudo apt-cache madison nvidia-docker2
+sudo apt-cache madison docker-ce
+# Install docker with specified version
+sudo apt-get install docker-ce="5:18.09.0~3-0~ubuntu-xenial"
+sudo apt-get install nvidia-docker2
+```
