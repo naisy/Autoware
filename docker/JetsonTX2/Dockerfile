@@ -3,7 +3,7 @@
 # ExecStart=/usr/bin/dockerd -H fd:// -g /media/ubuntu/SSD_M2/docker
 # service docker stop; systemctl daemon-reload; service docker start;
 
-# time docker build -t naisy/tx2-py27-autoware:1.9.1 -f Dockerfile
+# time docker build -t naisy/tx2-py27-autoware:1.9.1 -f Dockerfile .
 # docker login
 # docker push naisy/tx2-py27-autoware:1.9.1
 # need nvidia-driver 410.48 or later for cuda10 on host os.
@@ -29,7 +29,7 @@ LABEL Description="Autoware for Jetson TX2" Vendor="GClue" Version="1.0"
 
 ARG DEBIAN_FRONTEND=noninteractive
 # Because somethime the repository is 404, use with --fix-missing option.
-RUN apt-get --fix-missing update && apt-get install -y apt-utils
+RUN rm -rf /var/lib/apt/lists/*; apt-get --fix-missing update && apt-get install -y apt-utils
 
 
 
