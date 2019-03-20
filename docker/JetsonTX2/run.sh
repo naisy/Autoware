@@ -24,4 +24,4 @@ docker run \
     --privileged \
     -u ubuntu \
     --network=host \
-naisy/tx2-py27-autoware:1.9.1
+naisy/tx2-jp33-autoware:1.9.1

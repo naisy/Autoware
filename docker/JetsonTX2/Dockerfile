@@ -3,9 +3,9 @@
 # ExecStart=/usr/bin/dockerd -H fd:// -g /media/ubuntu/SSD_M2/docker
 # service docker stop; systemctl daemon-reload; service docker start;
 
-# time docker build -t naisy/tx2-py27-autoware:1.9.1 -f Dockerfile .
+# time docker build -t naisy/tx2-jp33-autoware:1.9.1 -f Dockerfile .
 # docker login
-# docker push naisy/tx2-py27-autoware:1.9.1
+# docker push naisy/tx2-jp33-autoware:1.9.1
 # need nvidia-driver 410.48 or later for cuda10 on host os.
 
 # Need separate build.
@@ -70,7 +70,7 @@ RUN useradd -m $USERNAME && \
 # before
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 # after
-#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\[\033[01;37m\]\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$ '
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\[\033[01;31m\]\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$ '
 
 # before
 # alias ls='ls --color=auto'
@@ -98,7 +98,7 @@ RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /home/$USERNAME/
 # before
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 # after
-#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$ '
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\[\033[01;31m\]\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$ '
 
 # before
 # alias ls='ls --color=auto'

@@ -39,6 +39,12 @@ ln -s /usr/local/cuda/targets/aarch64-linux/lib/stubs/libcuda.so /usr/local/cuda
 
 
 ########################################
+# disable autologin
+########################################
+./setup_autologin.sh
+
+
+########################################
 # reboot
 ########################################
 reboot
