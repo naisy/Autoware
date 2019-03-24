@@ -27,10 +27,21 @@ MAINTAINER Yoshiroh Takanashi <takanashi@gclue.jp>
 LABEL Description="Autoware for Jetson TX2" Vendor="GClue" Version="1.0"
 
 
+########################################
+# ENV
+########################################
+ENV LC_ALL=C.UTF-8 \
+LANG=C.UTF-8 \
+LANGUAGE=C.UTF-8
+
+ENV NVIDIA_DRIVER_CAPABILITIES all
+
 ARG DEBIAN_FRONTEND=noninteractive
 # Because somethime the repository is 404, use with --fix-missing option.
-RUN rm -rf /var/lib/apt/lists/*; apt-get --fix-missing update && apt-get install -y apt-utils
-
+RUN rm -rf /var/lib/apt/lists/* \
+&& apt-get --fix-missing update \
+&& apt-get install -y apt-utils \
+&& rm -rf /var/lib/apt/lists/*
 
 
 ########################################
@@ -48,6 +59,7 @@ RUN useradd -m $USERNAME && \
         # Replace 1000 with your user/group id
         usermod  --uid 1000 $USERNAME && \
         groupmod --gid 1000 $USERNAME
+
 
 ########################################
 # bash setting
@@ -84,7 +96,8 @@ RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /home/$USERNAME/
 && echo 'export XAUTHORITY=$HOME/.docker.xauth' >> /home/$USERNAME/.bashrc \
 && echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/lib' >> /home/$USERNAME/.bashrc \
 && echo 'export __GL_PERFMON_MODE=1' >> /home/$USERNAME/.bashrc \
-&& echo 'LANG=en_US.UTF-8' >> /home/$USERNAME/.bashrc \
+&& echo 'export LANG=en_US.UTF-8' >> /home/$USERNAME/.bashrc \
+&& echo 'export NO_AT_BRIDGE=1' >> /home/$USERNAME/.bashrc \
 && echo 'cd' >> /home/ubuntu/.bashrc
 
 ####################
@@ -113,7 +126,8 @@ RUN sed -i 's/xterm-color) color_prompt=yes;;/xterm-color|\*-256color) color_pro
 && echo 'export XAUTHORITY=$HOME/.docker.xauth' >> /root/.bashrc \
 && echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/lib' >> /root/.bashrc \
 && echo 'export __GL_PERFMON_MODE=1' >> /root/.bashrc \
-&& echo 'LANG=en_US.UTF-8' >> /root/.bashrc
+&& echo 'export LANG=en_US.UTF-8' >> /root/.bashrc \
+&& echo 'export NO_AT_BRIDGE=1' >> /root/.bashrc
 
 
 #########################################
@@ -190,9 +204,28 @@ RUN apt-get install -y python2.7 python2.7-dev \
 #    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
 #    -v /home/$(getent passwd 1000 | cut -d: -f1)/.docker.xauth:/home/ubuntu/.docker.xauth:rw \
 #    -v /root/.docker.xauth:/root/.docker.xauth:rw \
-#    -v /usr/local/cuda:/usr/local/cuda \
-#    -e "DISPLAY" \
+#    -v /usr/local/cuda/:/usr/local/cuda/ \
+#    -v /usr/local/cuda-9.0/:/usr/local/cuda-9.0/ \
+#    -v /usr/share/doc/nvidia-tegra/:/usr/share/doc/nvidia-tegra/ \
+#    -v /usr/lib/aarch64-linux-gnu/tegra/:/usr/lib/aarch64-linux-gnu/tegra/ \
+#    -v /usr/lib/aarch64-linux-gnu/tegra-egl/:/usr/lib/aarch64-linux-gnu/tegra-egl/ \
+#    -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro \
+#    --device /dev/nvhost-as-gpu \
+#    --device /dev/nvhost-ctrl \
+#    --device /dev/nvhost-ctrl-gpu \
+#    --device /dev/nvhost-ctxsw-gpu \
+#    --device /dev/nvhost-dbg-gpu \
+#    --device /dev/nvhost-gpu \
+#    --device /dev/nvhost-prof-gpu \
+#    --device /dev/nvhost-sched-gpu \
+#    --device /dev/nvhost-tsg-gpu \
+#    --device /dev/nvmap \
+#    --device /dev/snd \
+#    -e DISPLAY \
+#    -e QT_GRAPHICSSYSTEM=native \
+#    -e QT_X11_NO_MITSHM=1 \
+#    -e DISPLAY=${DISPLAY} \
 #    --privileged \
+#    -u ubuntu \
 #    --network=host \
-#    --user ubuntu \
-#    naisy/tx2-py27-autoware:1.9.1
+#    naisy/tx2-jp33-autoware:1.9.1

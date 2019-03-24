@@ -16,8 +16,6 @@ echo "source /opt/ros/kinetic/setup.bash" >> /home/ubuntu/.bashrc \
 && echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc \
 && echo "export QT_X11_NO_MITSHM=1" >> /home/ubuntu/.bashrc \
 && echo "export QT_X11_NO_MITSHM=1" >> /root/.bashrc \
-&& echo "export LANG=en_US.UTF-8" >> /home/ubuntu/.bashrc \
-&& echo "export LANG=en_US.UTF-8" >> /root/.bashrc \
 && echo "export LC_ALL=\$LANG" >>  /home/ubuntu/.bashrc
 
 
