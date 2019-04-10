@@ -51,11 +51,20 @@ HOST_MOUNT_PATH=/media/ubuntu/SSD_M2/AutowareData
 HOST_MOUNT_PATH=/home/ubuntu/AutowareData
 ```
 
+make docker <-> host shared directory.
+```
+mkdir ~/AutowareData
+```
+
 ### if you have M.2 SSD
 set automount and change default docker directory.
 Sorry, document is japanese only. But you can see image and set automount.
 [https://faboplatform.github.io/AutowareDocs/00.Install/00.TX2_setup/](https://faboplatform.github.io/AutowareDocs/00.Install/00.TX2_setup/)
 
+make docker <-> host shared directory.
+```
+mkdir /media/ubuntu/SSD_M2/AutowareData
+```
 
 ### docker run
 ```
