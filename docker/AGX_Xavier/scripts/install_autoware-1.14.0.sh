@@ -49,10 +49,10 @@ pip3 install -U setuptools
 
 
 # for CUDA
-cd && wget https://gitlab.com/libeigen/eigen/-/archive/3.3.8/eigen-3.3.8.tar.gz #Download Eigen
-mkdir eigen && tar --strip-components=1 -xzvf eigen-3.3.8.tar.gz -C eigen #Decompress
+cd && wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz #Download Eigen
+mkdir eigen && tar --strip-components=1 -xzvf eigen-3.3.7.tar.gz -C eigen #Decompress
 cd eigen && mkdir build && cd build && cmake .. && make && sudo make install #Build and install
-cd && rm -rf eigen-3.3.8.tar.gz && rm -rf eigen #Remove downloaded and temporary files
+cd && rm -rf eigen-3.3.7.tar.gz && rm -rf eigen #Remove downloaded and temporary files
 
 source /opt/ros/melodic/setup.bash
 
@@ -66,12 +66,12 @@ sudo rosdep init
 rosdep update
 rosdep install -y --from-paths src --ignore-src --rosdistro melodic # Yes
 
-
+sed -i 's/"10\.0"/"10.2"/g' ./src/autoware/common/autoware_build_flags/cmake/autoware_build_flags-extras.cmake
 
 # with CUDA <= 10.0
-# AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+AUTOWARE_COMPILE_WITH_CUDA=1 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 # Without CUDA
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+#colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 #10W 2core: Summary: 154 packages finished [2h 41min 50s]
 #15W 4core: Summary: 154 packages finished [1h 27min 37s]
