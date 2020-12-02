@@ -94,3 +94,9 @@ source install/setup.bash
 roslaunch runtime_manager runtime_manager.launch
 ```
 
+## Autoware version check
+```
+cd ~/autoware.ai/src/autoware/common
+git describe --tags
+```
+
