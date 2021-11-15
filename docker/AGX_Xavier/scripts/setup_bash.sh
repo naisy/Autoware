@@ -25,7 +25,7 @@ cat <<EOF>> /home/$(getent passwd 1000 | cut -d: -f1)/.bashrc
 
 export PATH=/usr/local/cuda-10.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
-export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/cuda-10.2/targets/aarch64-linux/lib:/usr/local/lib
 complete -d cd
 EOF
 
@@ -46,7 +46,7 @@ cat <<EOF>> /root/.bashrc
 
 export PATH=/usr/local/cuda-10.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
-export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/cuda-10.2/targets/aarch64-linux/lib:/usr/local/lib
 complete -d cd
 EOF
 
