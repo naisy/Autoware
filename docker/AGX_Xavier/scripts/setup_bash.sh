@@ -23,9 +23,9 @@ localedef -i en_US -f UTF-8 en_US.UTF-8
 
 cat <<EOF>> /home/$(getent passwd 1000 | cut -d: -f1)/.bashrc
 
-export PATH=/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/lib
 complete -d cd
 EOF
 
@@ -44,9 +44,9 @@ sed -i 's/xterm-color) color_prompt=yes;;/xterm-color|\*-256color) color_prompt=
 
 cat <<EOF>> /root/.bashrc
 
-export PATH=/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:/usr/local/lib
 complete -d cd
 EOF
 
